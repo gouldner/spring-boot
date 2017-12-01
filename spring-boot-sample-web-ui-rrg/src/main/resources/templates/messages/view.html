@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments :: head(title=~{::title/text()})">
+		<title>Messages : View</title>
+	</head>
+	<body>
+		<div class="container">
+			<div th:replace="fragments :: navbar"></div>
+			<h1>Messages : View</h1>
+			<div class="alert alert-success" th:if="${globalMessage}"
+				th:text="${globalMessage}">Some Success romanNumeralConvert</div>
+			<div class="pull-right">
+				<a th:href="@{/}" href="list.html"> Roman Numeral List </a>
+			</div>
+			<dl>
+				<dt>ID</dt>
+				<dd id="id" th:text="${romanNumeralConvert.id}">123</dd>
+				<dt>Date</dt>
+				<dd id="created" th:text="${#calendars.format(romanNumeralConvert.created)}">
+					July 11, 2012 2:17:16 PM CDT</dd>
+				<dt>Number to Convert</dt>
+				<dd id="summary" th:text="${romanNumeralConvert.numberToConvert}">A short summary...</dd>
+			</dl>
+			<div class="pull-left">
+				<a href="messages" th:href="@{'/delete/' + ${romanNumeralConvert.id}}">delete </a> |
+				<a href="form.html" th:href="@{'/modify/' + ${romanNumeralConvert.id}}"> modify </a>
+			</div>
+		</div>
+	</body>
+</html>

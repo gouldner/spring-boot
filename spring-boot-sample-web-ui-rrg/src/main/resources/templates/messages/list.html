@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments :: head(title=~{::title/text()})">
+		<title>Roman Numeral Conversions : View all</title>
+	</head>
+	<body>
+		<div class="container">
+			<div th:replace="fragments :: navbar"></div>
+			<h1>Roman Numeral Conversions : View all</h1>
+			<div class="container">
+				<div class="pull-right">
+					<a href="form.html" th:href="@{/(form)}">Create Roman Numeral Convert</a>
+				</div>
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<td>ID</td>
+							<td>Created</td>
+							<td>Number To Convert</td>
+							<td>Roman Numeral</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${messages.empty}">
+							<td colspan="4">No Conversions</td>
+						</tr>
+						<tr th:each="romanNumeralConvert : ${messages}">
+							<td th:text="${romanNumeralConvert.id}">1</td>
+							<td th:text="${#calendars.format(romanNumeralConvert.created)}">July 11,
+								2012 2:17:16 PM CDT</td>
+							<td><a href="view.html" th:href="@{'/' + ${romanNumeralConvert.id}}"
+								th:text="${romanNumeralConvert.numberToConvert}">The summary </a></td>
+							<td><a href="view.html" th:href="@{'/' + ${romanNumeralConvert.id}}"
+								   th:text="${romanNumeralConvert.romanNumeral}">The summary </a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

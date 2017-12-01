@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments :: head(title=~{::title/text()})">
+		<title>RomanNumeralConvert : Create</title>
+	</head>
+	<body>
+		<div class="container">
+			<div th:replace="fragments :: navbar"></div>
+			<h1>Roman Numeral Convert : Create</h1>
+			<form id="messageForm" th:action="@{/(form)}" th:object="${romanNumeralConvert}"
+				action="#" method="post">
+				<div th:if="${#fields.hasErrors('*')}" class="alert alert-error">
+					<p th:each="error : ${#fields.errors('*')}" th:text="${error}">
+						Validation error</p>
+				</div>
+				<div class="pull-right">
+					<a th:href="@{/}" href="messages.html"> Roman Numeral List </a>
+				</div>
+				<input type="hidden" th:field="*{id}"
+					th:class="${#fields.hasErrors('id')} ? 'field-error'" />
+				   <label for="numberToConvert">NumberToConvert</label>
+				   <input type="text"
+					th:field="*{numberToConvert}"
+					th:class="${#fields.hasErrors('numberToConvert')} ? 'field-error'" />
+				<div class="form-actions">
+					<input type="submit" value="Save" />
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

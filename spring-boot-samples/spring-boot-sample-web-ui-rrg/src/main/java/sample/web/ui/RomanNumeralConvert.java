@@ -91,6 +91,8 @@ public class RomanNumeralConvert {
             Integer intToConvert = Integer.parseInt(numberToConvertStr);
             if (intToConvert <= 0) {
 				romanNumeral += intToConvert + " has no Roman Conversion.";
+			} else if (intToConvert > 10000){
+				romanNumeral += "Too large to convert.";
 			} else {
 				for (Pair roman : romans) {
 					long checkVal = (long) intToConvert / (Integer) roman.getKey();
